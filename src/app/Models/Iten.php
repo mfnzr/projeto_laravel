@@ -4,17 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Symfony\Contracts\Service\Attribute\Required;
 
-class Explorer extends Model
+class Iten extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nome',
-        'idade',
+        'valor',
         'latitude',
         'longitude',
-        'inventario'
     ];
 }

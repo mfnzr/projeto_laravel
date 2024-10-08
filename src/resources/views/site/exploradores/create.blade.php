@@ -1,13 +1,21 @@
 <h1>Novo Explorador</h1>
 
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <p>{{ $error }}</p>
+    @endforeach
+@endif
+
 
 
 <form action="{{ route('exploradores.store') }}" method="POST">
     @csrf()
-        <input type="text" placeholder="Nome" placeholder="Nome" name="nome" required>
-        <input type="number" placeholder="Idade" placeholder="Idade" name="idade" required>
-        <input type="number" placeholder="Latitude" placeholder="Latitude" name="latitude" required>
-        <input type="number" placeholder="Longitude" placeholder="Longitude" name="longitude" required>
-        <input type="text" placeholder="Inventário" placeholder="Inventário" name="inventario" required>
+    <p>Nome</p> <input type="text" placeholder="Nome" name="nome" value="{{ old('nome') }}">
+        <p>Idade</p><input type="number" placeholder="Idade" name="idade" value="{{ old('idade') }}">
+        <p>Latitude</p><input type="number" placeholder="Latitude"name="latitude" value="{{ old('latitude') }}">
+        <p>Longitude</p><input type="number" placeholder="Longitude" name="longitude"value="{{ old('longitude') }}">
+        <p>Inventário</p><input type="text" placeholder="Inventário" name="inventario"value="{{ old('inventario') }}">
+        <br>
+        <br>
         <button type="submit">Enviar</button>
 </form>

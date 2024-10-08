@@ -19,7 +19,8 @@
                 <td>{{ $explorer->longitude }}</td>
                 <td>{{ $explorer->inventario }}</td>
                 <td>
-                    >
+                    <a href="{{ route('exploradores.show', $explorer->id) }}">Detalhes</a>
+                    <a href="{{ route('exploradores.edit', $explorer->id) }}">Editar</a>
                 </td>
             </tr>
         @endforeach
