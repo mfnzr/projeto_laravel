@@ -17,4 +17,8 @@ class Explorer extends Model
         'longitude',
         'inventario'
     ];
+
+    public function item() {
+        return $this->belongsTo(Item::class);
+    }
 }

@@ -40,6 +40,7 @@ class ExploradoresController extends Controller
     {
 
         $validatedData = $request->validate([
+            'id' => '|unique:explorers',
             'nome' => 'required|string|unique:explorers',
             'idade' => 'required|integer',
             'latitude' => 'required|integer',
