@@ -8,6 +8,9 @@
     <li>Inventário: {{$explorer->inventario}}</li>
 </ul>
 
+<a href="{{ route('itens.edit') }}">Adicionar novo item ao inventario</a>
+
+
 <form action="{{ route('exploradores.destroy', $explorer->id) }}" method="POST">
     @csrf
     @method('DELETE')

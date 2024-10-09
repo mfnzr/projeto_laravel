@@ -14,5 +14,4 @@
         <br>
         <button type="submit">Enviar</button>
 
-        <a href="{{ route('itens.create') }}">Adicionar novo item</a>
 </form>

@@ -44,8 +44,10 @@ class ExploradoresController extends Controller
             'idade' => 'required|integer',
             'latitude' => 'required|integer',
             'longitude' => 'required|integer',
-            'inventario' => 'string',
+            'inventario' => 'nullable|string',
         ]);
+
+        $inventario = $request->inventario ?? 'vazio';
 
         $data = $request->all();
 
@@ -76,6 +78,10 @@ class ExploradoresController extends Controller
             'longitude',
             'inventario'
         ]));
+
+        $explorer->latitude = $request->latitude;
+        $explorer->longitude = $request->longitude;
+        $explorer->save();
 
         return redirect()->route('exploradores.index');
     }

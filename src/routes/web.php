@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItensController as ControllersItensController;
 use App\Http\Controllers\Site\{ExploradoresController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\ItensController;
@@ -14,7 +15,9 @@ Route::post('/exploradores', [ExploradoresController::class, 'store'])->name('ex
 Route::get('/exploradores', [ExploradoresController::class, 'index'])->name('exploradores.index');
 
 //rotas itens
-Route::get('/itens', [ItensController::class, 'create'])->name('itens.create');
+Route::get('/itens', [ItensController::class, 'edit'])->name('itens.edit');
+
+
 
 Route::get('/', function () {
     return view('welcome');
