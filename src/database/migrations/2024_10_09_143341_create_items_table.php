@@ -18,7 +18,8 @@ return new class extends Migration
             $table->decimal('latitude');
             $table->decimal('longitude');
             $table->string('inventario')->nullable();
-            $table->foreignId('explorer_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('explorer_id')->nullable();
+            $table->foreign('explorer_id')->references('id')->on('explorers')->onDelete('cascade');
             $table->timestamps();
         });
     }

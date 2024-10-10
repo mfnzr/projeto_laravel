@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('idade');
             $table->decimal('latitude');
             $table->decimal('longitude');
-            $table->string('inventario')->nullable();
             $table->timestamps();
+
         });
     }
 

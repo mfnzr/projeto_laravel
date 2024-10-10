@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateExplorer;
+use App\Http\Requests\StoreUpdateExplorerRequest;
 use App\Models\Explorer;
 use Illuminate\Http\Request;
 
@@ -36,19 +37,8 @@ class ExploradoresController extends Controller
     }
 
 
-    public function store(Request $request, Explorer $explorer)
+    public function store(StoreUpdateExplorerRequest $request, Explorer $explorer)
     {
-
-        $validatedData = $request->validate([
-            'id' => '|unique:explorers',
-            'nome' => 'required|string|unique:explorers',
-            'idade' => 'required|integer',
-            'latitude' => 'required|integer',
-            'longitude' => 'required|integer',
-            'inventario' => 'nullable|string',
-        ]);
-
-        $inventario = $request->inventario ?? 'vazio';
 
         $data = $request->all();
 

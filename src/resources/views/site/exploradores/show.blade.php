@@ -5,10 +5,11 @@
     <li>Idade: {{$explorer->idade}}</li>
     <li>Latitude: {{$explorer->latitude}}</li>
     <li>Longitude: {{$explorer->longitude}}</li>
-    <li>Inventário: {{$explorer->inventario}}</li>
 </ul>
 
-<a href="{{ route('itens.edit', $explorer->id) }}">Adicionar novo item ao inventario</a>
+<a href="{{ route('itens.show', $explorer->id) }}">Mostrar inventário</a>
+<br>
+<a href="{{ route('itens.create', $explorer->id) }}">Adicionar novo item ao inventario</a>
 
 
 <form action="{{ route('exploradores.destroy', $explorer->id) }}" method="POST">

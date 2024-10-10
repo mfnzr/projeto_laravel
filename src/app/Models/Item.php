@@ -12,14 +12,14 @@ class Item extends Model
     protected $table = 'items';
 
     protected $fillable = [
-        'explorador_id',
         'nome',
         'valor',
         'latitude',
         'longitude',
+        'explorador_id',
     ];
 
-    public function explorador() {
+    public function explorer() {
         return $this->belongsTo(Explorer::class);
     }
 }

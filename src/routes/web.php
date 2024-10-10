@@ -16,9 +16,23 @@ Route::get('/exploradores', [ExploradoresController::class, 'index'])->name('exp
 //rotas itens
 Route::put('/itens/{id}', [ItensController::class, 'update'])->name('itens.update');
 Route::get('/itens/{id}/edit', [ItensController::class, 'edit'])->name('itens.edit');
-Route::get('itens/create', [ItensController::class, 'create'])->name('itens.create');
+Route::get('itens/{explorer}/create', [ItensController::class, 'create'])->name('itens.create');
 Route::get('/itens/{id}', [ItensController::class, 'show'])->name('itens.show');
-Route::post('itens/{id}', [ItensController::class, 'store'])->name('itens.store');
+Route::post('/itens/{explorer}', [ItensController::class, 'store'])->name('itens.store');
+Route::get('/itens', [ExploradoresController::class, 'index'])->name('itens.index');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');

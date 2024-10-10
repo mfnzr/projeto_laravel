@@ -9,7 +9,6 @@
         <p>Idade</p><input type="number" placeholder="Idade" name="idade" value="{{$explorer->idade}}">
         <p>Latitude</p><input type="number" placeholder="Latitude" name="latitude" value="{{$explorer->latitude}}">
         <p>Longitude</p><input type="number" placeholder="Longitude" name="longitude" value="{{$explorer->longitude}}">
-        <p>Inventário</p><textarea name="inventario" rows="5" placeholder="Inventário" name="inventario">{{$explorer->inventario}}"</textarea>
         <br>
         <br>
         <button type="submit">Enviar</button>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUpdateExplorer;
+use App\Http\Requests\StoreUpdateItensRequest;
 use App\Models\Explorer;
 use App\Models\Item;
 use Illuminate\Http\Request;
@@ -12,40 +12,23 @@ use function Laravel\Prompts\error;
 
 class ItensController extends Controller
 {
-
-    public function show(string|int $id)
+    public function show($id)
     {
-        if(!$item = Item::find($id)) {
-            return back();
-        }
-
+        $item = Item::find($id);
         return view('site/itens/show', compact('item'));
     }
 
-    public function create()
+    public function create(Explorer $explorer)
     {
-    return view('itens.create');
+        return view('site/itens/create', compact('explorer'));
     }
 
 
-    public function store(Request $request)
+    public function store(StoreUpdateItensRequest $request, Explorer $explorer)
     {
-
-        $validatedData = $request->validate([
-            'nome' => 'required|string',
-            'valor' => 'required|integer',
-            'latitude' => 'required|integer',
-            'longitude' => 'required|integer',
-            'inventario' => 'nullable|string',
-        ]);
-
-        Item::create([
-            'nome' => $request->nome,
-            'valor' => $request->valor,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'inventario' => $request->inventario,
-        ]);
+        $data = $request->all();
+        $data['explorer_id'] = $explorer->id;
+        Item::create($data);
 
         return redirect()->route('exploradores.index');
 
@@ -53,23 +36,22 @@ class ItensController extends Controller
 
     public function edit($id)
     {
-        // if($item->explorador_id != $id) {
-        //     return error('Item não encontrado');
-        // }
 
         $explorer = Explorer::find($id);
         return view('site/itens/edit', compact('explorer'));
     }
 
-    public function update(Request $request, Item $item)
+    public function update(StoreUpdateItensRequest $request, Item $item, Explorer $explorer)
     {
 
         $item->update($request->only([
             'inventario'
         ]));
 
-        $item->inventario = $request->inventario;
-        $item->save();
+        $explorer->inventario = array_merge($explorer->inventario, [$request->item]);
+        // $item->inventario = $request->inventario;
+        // $item->save();
+        $explorer->save();
 
         return redirect()->route('exploradores.index');
     }
