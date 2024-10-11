@@ -49,8 +49,8 @@ class ItensController extends Controller
         ]));
 
         $explorer->inventario = array_merge($explorer->inventario, [$request->item]);
-        // $item->inventario = $request->inventario;
-        // $item->save();
+        $item->inventario = $request->inventario;
+        $item->save();
         $explorer->save();
 
         return redirect()->route('exploradores.index');
